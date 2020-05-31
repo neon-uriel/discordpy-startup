@@ -35,7 +35,7 @@ async def ejimasu(ctx):
     img = cv2.imread('./images/ejimasu_stamp.png', 1)                         # カラー画像読み込み
     message = 'えじますです。'                # 画像に入れる文章
     img = img_add_msg(img, message)                         # 画像に文字を入れる関数を実行
-    # await ctx.send('おったまげた。')
-    await ctx.send(file = './images/ejimasu_stamp.png')
+    await ctx.send('おったまげた。')
+    await ctx.send_file( message.channel, './images/ejimasu_stamp.png')
 
 bot.run(token)

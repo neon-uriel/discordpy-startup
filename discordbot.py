@@ -5,6 +5,7 @@ from PIL import Image, ImageFont, ImageDraw
 import cv2
 import numpy as np
 import discord
+import asyncio
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='/')

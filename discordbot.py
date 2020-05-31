@@ -40,11 +40,11 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-async def ejimasu(ctx, arg):
+async def ejimasu(self, ctx, arg : str):
     if (arg == ""):
         await ctx.send('なんかいれろよな。')
     img = cv2.imread('./images/ejimasu_stamp.png', 1)                         # カラー画像読み込み
-    message = arg.encode('utf-8')                # 画像に入れる文章
+    message = arg                # 画像に入れる文章
     img = img_add_msg(img, message)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2RGBA)     
     cv2.imwrite('./images/result.png', img)                    # 画像に文字を入れる関数を実行

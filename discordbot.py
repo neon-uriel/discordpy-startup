@@ -24,7 +24,7 @@ def img_add_msg(img, message):
     font = ImageFont.truetype(font_path, font_size)     # PILでフォントを定義
     img = Image.fromarray(img)                          # cv2(NumPy)型の画像をPIL型に変換
     draw = ImageDraw.Draw(img)                          # 描画用のDraw関数を用意
-    w = draw.textsize(message)
+    w , h = draw.textsize(message)
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
     draw.text(((300-w)/2, 250), message, font=font, fill=(255, 255, 255, 0))
     img = np.array(img)                                 # PIL型の画像をcv2(NumPy)型に変換

@@ -4,6 +4,18 @@ import traceback
 from PIL import Image, ImageFont, ImageDraw
 import cv2
 import numpy as np
+import discord
+
+client = discord.Client()
+bot = commands.Bot(command_prefix='/')
+token = os.environ['DISCORD_BOT_TOKEN']
+
+@client.event
+async def on_ready():
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
 
 # 画像に文字を入れる関数
 def img_add_msg(img, message):
@@ -17,10 +29,6 @@ def img_add_msg(img, message):
     draw.text((50, 50), message, font=font, fill=(255, 255, 255, 0))
     img = np.array(img)                                 # PIL型の画像をcv2(NumPy)型に変換
     return img                                          # 文字入りの画像をリターン
-
-
-bot = commands.Bot(command_prefix='/')
-token = os.environ['DISCORD_BOT_TOKEN']
 
 
 @bot.event

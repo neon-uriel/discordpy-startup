@@ -36,6 +36,6 @@ async def ejimasu(ctx):
     message = 'えじますです。'                # 画像に入れる文章
     img = img_add_msg(img, message)                         # 画像に文字を入れる関数を実行
     await ctx.send('おったまげた。')
-    await ctx.send_file( message.channel, './images/ejimasu_stamp.png')
+    await ctx.send_file('./images/ejimasu_stamp.png')
 
 bot.run(token)

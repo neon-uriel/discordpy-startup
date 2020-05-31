@@ -26,7 +26,7 @@ def img_add_msg(img, message):
     draw = ImageDraw.Draw(img)                          # 描画用のDraw関数を用意
 
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
-    draw.text((50, 50), message, font=font, fill=(255, 255, 255, 0))
+    draw.text((50, 250), message, font=font, fill=(255, 255, 255, 0))
     img = np.array(img)                                 # PIL型の画像をcv2(NumPy)型に変換
     return img                                          # 文字入りの画像をリターン
 
@@ -39,11 +39,11 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-async def ejimasu(ctx):
+async def ejimasu(ctx, arg):
     img = cv2.imread('./images/ejimasu_stamp.png', 1)                         # カラー画像読み込み
-    message = 'えじますです。'                # 画像に入れる文章
+    message = arg                # 画像に入れる文章
     img = img_add_msg(img, message)                         # 画像に文字を入れる関数を実行
-    await ctx.send('おったまげた。')
-    await ctx.send(file=discord.File('./images/ejimasu_stamp.png'))
+    await ctx.send('ejimasuは' + arg)
+    await ctx.send(file=discord.File(img))
 
 bot.run(token)

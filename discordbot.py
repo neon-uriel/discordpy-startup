@@ -26,14 +26,16 @@ def img_add_msg(img, message):
     font_path = './fonts/Noto.otf'           # Windowsのフォントファイルへのパス
     font_size = 20    # フォントサイズ
     font = ImageFont.truetype(font_path, font_size,0,encoding='utf-8')     # PILでフォントを定義
-    img = cv2.cvtColor(img, cv2.COLOR_RGB2RGBA)
+    mask = Image.open('./images/ejimasu_stamp_alpha.png')
     img = Image.fromarray(img)                          # cv2(NumPy)型の画像をPIL型に変換
     draw = ImageDraw.Draw(img)                          # 描画用のDraw関数を用意
     w , h = draw.textsize(message,font=font)
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
-    draw.text(((300-w)/2, 250), message, font=font, fill=(255, 0, 0, 0))
+    draw.text(((320-w)/2, 250), message, font=font, fill=(255, 0, 0, 0))
+    bg = Image.new("RGBA", img.size,(0,0,0,0))
     img = np.array(img)                                 # PIL型の画像をcv2(NumPy)型に変換
-    return img                                          # 文字入りの画像をリターン
+    bg.paste(img,(0,0),mask.split()[0])
+    return bg                                          # 文字入りの画像をリターン
 
 
 @bot.event

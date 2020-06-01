@@ -3,6 +3,7 @@ from PIL import Image, ImageFont, ImageDraw
 #import cv2
 import numpy as np
 import sys
+import math
 
 # 画像に文字を入れる関数
 def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = False):
@@ -11,7 +12,14 @@ def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = F
     font_size = fontsize    # フォントサイズ
     fontcustom = ImageFont.truetype(font_path, font_size, 0, encoding='utf-8') # PILでフォントを定義
     # mask = Image.open("./images/ejimasu_stamp_alpha.png")
-    img = Image.open(img)
+    img = Image.open(img).convert("RGBA")
+    iw, ih = img.size
+    while(iw > 256 or ih > 256):
+        iw *= 0.99
+        ih *= 0.99
+        iw = math.floor(iw)
+        ih = math.floor(ih)
+    img = img.resize((iw,ih))
     bg = Image.new("RGBA", (320,320), (0,0,0,0))
     # bg.paste(img,(0,0),mask.split()[0])
     # textch = Image.new("RGBA", img.size,(0,0,0,0))
@@ -30,6 +38,9 @@ def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = F
         draw.text((x+1, y-1), message, font=fontcustom, fill=shadowcolor)
         draw.text((x-1, y+1), message, font=fontcustom, fill=shadowcolor)
     draw.text((x, y), message, font=fontcustom, fill=fontcolor)
-    bg.paste(img,(0,0),img)
+    centerx = math.floor((320 - iw) / 2)
+    if (iw != 320):
+        centery = 10
+    bg.paste(img,(centerx,centery),img)
     # textch = np.array(textch) # PIL型の画像をcv2(NumPy)型に変換
     return bg # 文字入りの画像をリターン

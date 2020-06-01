@@ -1,6 +1,7 @@
 # coding: utf-8
 from discord.ext import commands
 import os
+import io
 import traceback
 from PIL import Image, ImageFont, ImageDraw
 import cv2
@@ -9,6 +10,7 @@ import discord
 import asyncio
 import makegotoitaly
 import requests
+import urllib.request
 from discord.ext.commands import CommandNotFound
 
 client = discord.Client()
@@ -64,10 +66,9 @@ async def url_(ctx, *args):
         fontcolor = args[2]
     imgurl = args[0]
     file_name = './images/download.png'
-    response = requests.get(imgurl)
-    dl_image = response.content
-    with open(file_name, "wb") as aaa:
-        aaa.write(dl_image)
+    r = requests.get(imgurl)
+    img = Image.open(io.BytesIO(r.content))
+    img.save(file_name)
     img = makegotoitaly.img_add_msg(file_name, message,fontcolor,30,False)
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))

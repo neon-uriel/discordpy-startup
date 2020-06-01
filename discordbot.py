@@ -8,6 +8,7 @@ import numpy as np
 import discord
 import asyncio
 import makegotoitaly
+import requests
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='/')
@@ -61,7 +62,12 @@ async def url_(ctx, *args):
     else:
         fontcolor = args[2]
     imgurl = args[0]
-    img = makegotoitaly.img_add_msg(imgurl, message,fontcolor,30,False)
+    file_name = './images/download.png'
+    response = requests.get(imgurl)
+    dl_image = response.content
+    with open(file_name, "wb") as aaa:
+        aaa.write(dl_image)
+    img = makegotoitaly.img_add_msg(file_name, message,fontcolor,30,False)
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
 

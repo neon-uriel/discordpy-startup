@@ -54,13 +54,14 @@ async def gotoitaly(ctx, *args):
 
 @bot.command()
 async def url_(ctx, *args):
-    message = args[0] # 画像に入れる文章
+    message = args[1] # 画像に入れる文章
     message = message.replace('_',' ')
-    if len(args) == 1:
+    if len(args) == 2:
         fontcolor = '#FF5555'
     else:
-        fontcolor = args[1]
-    img = makegotoitaly.img_add_msg("./images/gotoitaly_stamp.png", message,fontcolor,30,False)
+        fontcolor = args[2]
+    imgurl = args[0]
+    img = makegotoitaly.img_add_msg(imgurl, message,fontcolor,30,False)
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
 

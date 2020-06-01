@@ -17,7 +17,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    await client.change_presence(activity=discord.Game(name='麺屋Aishin'))
+    await client.change_presence(activity=discord.Game(name='稼働中'))
 
 # 画像に文字を入れる関数
 def img_add_msg(img, message):

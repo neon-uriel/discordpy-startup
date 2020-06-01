@@ -57,7 +57,7 @@ async def gotoitaly(ctx, *args):
     await ctx.send(file=discord.File("./images/result.png"))
 
 @bot.command()
-async def url_(ctx, *args):
+async def urlimg(ctx, *args):
     message = args[1] # 画像に入れる文章
     message = message.replace('_',' ')
     if len(args) == 2:

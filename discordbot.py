@@ -16,10 +16,13 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+    client.user.setActivity('麺屋Aishin', {
+        type: 'STREAMING'
+    });
 
 # 画像に文字を入れる関数
 def img_add_msg(img, message):
-    font_path = './fonts/NotoSansMonoCJKjp-Bold.otf'           # Windowsのフォントファイルへのパス
+    font_path = './fonts/Noto.otf'           # Windowsのフォントファイルへのパス
     font_size = 20    # フォントサイズ
     font = ImageFont.truetype(font_path, font_size)     # PILでフォントを定義
     img = cv2.cvtColor(img, cv2.COLOR_RGB2RGBA)
@@ -40,9 +43,7 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-async def ejimasu(self, ctx, arg : str):
-    if (arg == ""):
-        await ctx.send('なんかいれろよな。')
+async def ejimasu(ctx, arg):
     img = cv2.imread('./images/ejimasu_stamp.png', 1)                         # カラー画像読み込み
     message = arg                # 画像に入れる文章
     img = img_add_msg(img, message)

@@ -32,7 +32,7 @@ def img_add_msg(img, message):
     draw = ImageDraw.Draw(textch)                          # 描画用のDraw関数を用意
     w , h = draw.textsize(message,font=font)
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
-    draw.text(((320-w)/2, 250), message, font=font, fill=(255, 51, 102, 1))
+    draw.text(((320-w)/2, 250), message, font=font, fill=(255, 255, 255, 0))
     #textch.paste(bg,(0,0))
     textch = np.array(textch)                                 # PIL型の画像をcv2(NumPy)型に変換
     return textch                                          # 文字入りの画像をリターン

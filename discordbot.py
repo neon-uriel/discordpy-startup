@@ -33,9 +33,9 @@ def img_add_msg(img, message):
     w , h = draw.textsize(message,font=font)
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
     draw.text(((320-w)/2, 250), message, font=font, fill=(255, 51, 102, 1))
-    bg.paste(textch,(0,0))
-    bg = np.array(bg)                                 # PIL型の画像をcv2(NumPy)型に変換
-    return bg                                          # 文字入りの画像をリターン
+    textch.paste(bg,(0,0))
+    textch = np.array(textch)                                 # PIL型の画像をcv2(NumPy)型に変換
+    return textch                                          # 文字入りの画像をリターン
 
 
 @bot.event

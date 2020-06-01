@@ -28,10 +28,12 @@ def img_add_msg(img, message):
     img = Image.fromarray(img)                          # cv2(NumPy)型の画像をPIL型に変換
     bg = Image.new("RGBA", img.size,(0,0,0,0))
     bg.paste(img,(0,0),mask.split()[0])
-    draw = ImageDraw.Draw(bg)                          # 描画用のDraw関数を用意
+    textch = Image.new("RGBA", img.size,(0,0,0,0))
+    draw = ImageDraw.Draw(textch)                          # 描画用のDraw関数を用意
     w , h = draw.textsize(message,font=font)
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
     draw.text(((320-w)/2, 250), message, font=font, fill=(255, 51, 102, 1))
+    bg.paste(textch,(0,0))
     bg = np.array(bg)                                 # PIL型の画像をcv2(NumPy)型に変換
     return bg                                          # 文字入りの画像をリターン
 

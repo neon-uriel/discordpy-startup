@@ -18,6 +18,10 @@ def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = F
     draw = ImageDraw.Draw(bg) # 描画用のDraw関数を用意
     w , h = draw.textsize(message, font=fontcustom)
     # テキストを描画（位置、文章、フォント、文字色（BGR+α）を指定）
+    while(w > 320):
+        font_size -= 1
+        fontcustom = ImageFont.truetype(font_path, font_size, 0, encoding='utf-8')
+        w , h = draw.textsize(message, font=fontcustom)
     x = (320 - w)/2
     y = 250
     if (isShadow):

@@ -34,17 +34,17 @@ def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = F
         w , h = draw.textsize(message, font=fontcustom)
     x = (320 - w)/2
     y = 250
+    centery = 0
+    centerx = 0
+    if (ihs != 320 and iws != 320):
+        centerx = math.floor((320 - iw) / 2)
+        centery = math.floor((320 - ih) / 2) - 20
+    bg.paste(img,(centerx,centery),img)
     if (isShadow):
         draw.text((x+1, y+1), message, font=fontcustom, fill=shadowcolor)
         draw.text((x-1, y-1), message, font=fontcustom, fill=shadowcolor)
         draw.text((x+1, y-1), message, font=fontcustom, fill=shadowcolor)
         draw.text((x-1, y+1), message, font=fontcustom, fill=shadowcolor)
     draw.text((x, y), message, font=fontcustom, fill=fontcolor)
-    centery = 0
-    centerx = 0
-    if (ihs != 320 and iws != 320):
-        centerx = math.floor((320 - iw) / 2)
-        centery = 10
-    bg.paste(img,(centerx,centery),img)
     # textch = np.array(textch) # PIL型の画像をcv2(NumPy)型に変換
     return bg # 文字入りの画像をリターン

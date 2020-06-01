@@ -35,6 +35,7 @@ async def ejimasu(ctx, arg1,):
     # img = cv2.cvtColor(img, cv2.COLOR_RGB2RGBA)     
     # cv2.imwrite('./images/result.png', img)                    # 画像に文字を入れる関数を実行
     #await ctx.send('ejimasuは' + arg)
+    img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
 
 bot.run(token)

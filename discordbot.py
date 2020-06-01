@@ -31,14 +31,27 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ejimasu(ctx, *args):
     message = args[0] # 画像に入れる文章
-    img = makegotoitaly.img_add_msg("./images/ejimasu_stamp.png", message,'#FF5555',30,False)
+    if len(args) == 1:
+        args.append('#FF5555')
+    img = makegotoitaly.img_add_msg("./images/ejimasu_stamp.png", message,args[1],30,False)
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
 
 @bot.command()
 async def gotoitaly(ctx, *args):
     message = args[0] # 画像に入れる文章
-    img = makegotoitaly.img_add_msg("./images/gotoitaly_stamp.png", message,'#FF5555',30,False)
+    if len(args) == 1:
+        args.append('#FF5555')
+    img = makegotoitaly.img_add_msg("./images/gotoitaly_stamp.png", message,args[1],30,False)
+    img.save("./images/result.png")
+    await ctx.send(file=discord.File("./images/result.png"))
+
+@bot.command()
+async def url_(ctx, *args):
+    message = args[0] # 画像に入れる文章
+    if len(args) == 1:
+        args.append('#FF5555')
+    img = makegotoitaly.img_add_msg("./images/gotoitaly_stamp.png", message,args[1],30,False)
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
 

@@ -14,12 +14,14 @@ def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = F
     # mask = Image.open("./images/ejimasu_stamp_alpha.png")
     img = Image.open(img).convert("RGBA")
     iw, ih = img.size
-    while(iw > 256 or ih > 256):
+    iws, ihs = img.size
+    while(iw > 200 or ih > 200):
         iw *= 0.99
         ih *= 0.99
         iw = math.floor(iw)
         ih = math.floor(ih)
-    img = img.resize((iw,ih))
+    if(iws != 320 and ihs != 320):
+        img = img.resize((iw,ih))
     bg = Image.new("RGBA", (320,320), (0,0,0,0))
     # bg.paste(img,(0,0),mask.split()[0])
     # textch = Image.new("RGBA", img.size,(0,0,0,0))
@@ -38,8 +40,10 @@ def img_add_msg(img, message, fontcolor = "#FF5555", fontsize = 30, isShadow = F
         draw.text((x+1, y-1), message, font=fontcustom, fill=shadowcolor)
         draw.text((x-1, y+1), message, font=fontcustom, fill=shadowcolor)
     draw.text((x, y), message, font=fontcustom, fill=fontcolor)
-    centerx = math.floor((320 - iw) / 2)
-    if (iw != 320):
+    centery = 0
+    centerx = 0
+    if (ihs != 320 and iws != 320):
+        centerx = math.floor((320 - iw) / 2)
         centery = 10
     bg.paste(img,(centerx,centery),img)
     # textch = np.array(textch) # PIL型の画像をcv2(NumPy)型に変換

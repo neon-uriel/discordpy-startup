@@ -11,6 +11,7 @@ import asyncio
 import makegotoitaly
 import requests
 import urllib.request
+import neta_output
 from discord.ext.commands import CommandNotFound
 
 client = discord.Client()
@@ -72,5 +73,9 @@ async def urlimg(ctx, *args):
     img = makegotoitaly.img_add_msg(file_name, message,fontcolor,30,False)
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
+
+@bot.command()
+async def netadashi(ctx):
+    await ctx.send(neta_output.netaGen())
 
 bot.run(token)

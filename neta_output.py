@@ -1,20 +1,45 @@
 import random
 
 def netaGen():
+
     verb = [
         'してみた！',
         'やってみた！',
         'に行きます。',
         '凸待ち。',
-        '作ってみた！'
+        '作ってみた！',
+        'をする人に募金をします。',
+        '買った結果ｗｗｗｗ',
+        'やった結果ｗｗｗｗ',
+        'した結果ｗｗｗｗ',
+        'することとなりました。',
+        'した件について語る。'
+
     ]
 
     S1 = [
-        'えじますが',
-        'chibacchiが',
-        '平間太規が',
-        'ヒカキンさんから',
-        '乙武さんと'
+        'ejimasu',
+        'chibacchi',
+        '平間太規',
+        'ヒカキンさん',
+        '乙武さん',
+        '小池都知事',
+        'ラムネ',
+        '香取慎吾',
+        'ヒカキンゲームズ',
+        'SEIKIN',
+        'セイキンさん',
+        'シバター',
+        'ワイ',
+        'ヒロック',
+        '廣川龍'
+    ]
+
+    tenioha = [
+        'が',
+        'と',
+        'と一緒に',
+        '、'
     ]
 
     C1 = [
@@ -22,10 +47,26 @@ def netaGen():
         'ドライブ',
         '飲み会コールの練習',
         'ゲイバー',
-        'LINEスタンプ'
+        'LINEスタンプ制作',
+        'エゴサーチ',
+        '盗撮',
+        'UUUM脱退',
+        'ボビー・オロゴンに1億円寄付',
+        '料理',
+        '退学'
     ]
-    rand_num1 = random.randint(0,4)
-    rand_num2 = random.randint(0,4)
-    rand_num3 = random.randint(0,4)
-    # SS = S1[rand_num1] + C1[rand_num2] + verb[rand_num3]
-    return S1[rand_num1] + C1[rand_num2] + verb[rand_num3]
+    rand_num1 = random.randint(0,len(S1) - 1)
+    rand_num2 = random.randint(0,len(C1) - 1)
+    rand_num3 = random.randint(0,len(verb) - 1)
+    rand_num_teni = random.randint(0,len(tenioha) - 1)
+    ans = [
+        S1[rand_num1] + tenioha[rand_num_teni] + C1[rand_num2] + verb[rand_num3],
+        S1[rand_num1] + tenioha[rand_num_teni] + C1[rand_num2] + verb[rand_num3],
+        S1[rand_num1] + "を救いたい。",
+        C1[rand_num2] + "、キモチェェ〜〜",
+        '【悲報】' + S1[rand_num1] + tenioha[rand_num_teni] + C1[rand_num2] + verb[rand_num3],
+        '【朗報】' + S1[rand_num1] + tenioha[rand_num_teni] + C1[rand_num2] + verb[rand_num3],
+        '【漫画】' + S1[rand_num1] + tenioha[rand_num_teni] + C1[rand_num2] + verb[rand_num3] + '【マンガ動画】'
+    ]
+    rand_num4 = random.randint(0,len(ans) - 1)
+    return ans[rand_num4]

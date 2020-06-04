@@ -58,6 +58,18 @@ async def gotoitaly(ctx, *args):
     await ctx.send(file=discord.File("./images/result.png"))
 
 @bot.command()
+async def gotoitaly(ctx, *args):
+    message = args[0] # 画像に入れる文章
+    message = message.replace('_',' ')
+    if len(args) == 1:
+        fontcolor = '#FF5555'
+    else:
+        fontcolor = args[1]
+    img = makegotoitaly.img_add_msg("./images/ejimasusis_stamp.png", message,fontcolor,30,False)
+    img.save("./images/result.png")
+    await ctx.send(file=discord.File("./images/result.png"))
+
+@bot.command()
 async def urlimg(ctx, *args):
     message = args[1] # 画像に入れる文章
     message = message.replace('_',' ')

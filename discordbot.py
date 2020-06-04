@@ -58,7 +58,7 @@ async def gotoitaly(ctx, *args):
     await ctx.send(file=discord.File("./images/result.png"))
 
 @bot.command()
-async def gotoitaly(ctx, *args):
+async def ejimasusister(ctx, *args):
     message = args[0] # 画像に入れる文章
     message = message.replace('_',' ')
     if len(args) == 1:

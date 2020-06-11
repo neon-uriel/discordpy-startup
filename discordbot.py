@@ -12,6 +12,7 @@ import makegotoitaly
 import requests
 import urllib.request
 import neta_output
+import teamwake
 from discord.ext.commands import CommandNotFound
 
 client = discord.Client()
@@ -69,6 +70,17 @@ async def ejimasusister(ctx, *args):
     img.save("./images/result.png")
     await ctx.send(file=discord.File("./images/result.png"))
 
+@bot.command()
+async def team(ctx, *args):
+    team = teamwake.doTeamwake(args)
+    mes1 = 'チーム' + team[0][0] + ': '
+    mes2 = 'チーム' + team[1][0] + ': '
+    for i in range (len(team[0])):
+        mes1 += team[0][i] + ', '
+    for i in range (len(team[1])):
+        mes2 += team[1][i] + ', '
+    result = (mes1[0:len(mes1) - 2] + '\n' + mes2[0:len(mes2) - 2])
+    await ctx.send(result)
 @bot.command()
 async def urlimg(ctx, *args):
     message = args[1] # 画像に入れる文章

@@ -1,11 +1,10 @@
 import random
 import sys
 def doTeamwake(*args):
-    humannum = len(args)
-    team1num = humannum // 2
-    team2num = humannum - team1num
-    cnt = team1num
-    team1 = random.sample(args,k=team1num)
-    team2 = list(set(args) - set(team1))
+    team = list(args)
+    random.shuffle(team)
+    print(len(team)//2 - 1)
+    team1 = team[0:len(team)//2]
+    team2 = team[len(team)//2:len(team)]
+    print(team)
     return team1,team2
-# print(teamwake.doTeamwake('ramune','nasuline','hirama','chibacchi'))

@@ -73,7 +73,7 @@ async def ejimasusister(ctx, *args):
 @bot.command()
 async def team(ctx, *args):
     team = teamwake.doTeamwake(args)
-    await ctx.send(len(args))
+    await ctx.send(team)
     # mes1 = 'チーム' + team[0][0] + ': '
     # mes2 = 'チーム' + team[1][0] + ': '
     # for i in range (len(team[0])):

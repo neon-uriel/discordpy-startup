@@ -13,8 +13,11 @@ def makeResult(team,team1,team2):
     mes1 = 'チーム' + team1[0] + ': \n'
     mes2 = 'チーム' + team2[0] + ': \n'
     for i in range (len(team1)):
-        mes1 += team1[i] + ', '
+        mes1 += team1[i] + '\n'
     for i in range (len(team2)):
-        mes2 += team2[i] + ', '
-    result = (mes1[0:len(mes1) - 2] + '\n\n' + mes2[0:len(mes2) - 2])
+        if(i == len(team2) - 1):
+            mes2 += team2[i]
+        else:
+            mes2 += team2[i] + '\n'
+    result = (mes1 + '\n' + mes2)
     return result

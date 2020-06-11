@@ -81,7 +81,7 @@ async def team(ctx, *args):
     for i in range (len(team[1])):
         mes2 += team[1][i] + ', '
     result = (mes1[0:len(mes1) - 2] + '\n' + mes2[0:len(mes2) - 2])
-    await ctx.send(result)
+    await ctx.send(team)
 
 @bot.command()
 async def urlimg(ctx, *args):

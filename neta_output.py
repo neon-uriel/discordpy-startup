@@ -81,4 +81,4 @@ def ramuline():
         'Valorantに全てを賭けれるのかよ'
     ]
     rand_num1 = random.randint(0,len(ramu) - 1)
-    return ramu[rand_num1]
+    return ramu[rand_num1] + " by ramuline"

@@ -70,3 +70,15 @@ def netaGen():
     ]
     rand_num4 = random.randint(0,len(ans) - 1)
     return ans[rand_num4]
+
+def ramuline():
+
+    ramu = [
+        'まだ終わってねえんだよ。',
+        '死が救済訳ないだろ',
+        'こんな戦況からでも勝てるのが僕ら',
+        '死体撃ちする奴がいるとゲームが楽しくなくなる。',
+        'Valorantに全てを賭けれるのかよ'
+    ]
+    rand_num1 = random.randint(0,len(ramu) - 1)
+    return ramu[rand_num1]

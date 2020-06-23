@@ -105,5 +105,9 @@ async def urlimg(ctx, *args):
 @bot.command()
 async def netadashi(ctx):
     await ctx.send(neta_output.netaGen())
-
+    
+@bot.command()
+async def ramune(ctx):
+    await ctx.send(neta_output.ramuline())
+    
 bot.run(token)

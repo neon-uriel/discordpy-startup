@@ -78,7 +78,8 @@ def ramuline():
         '死が救済訳ないだろ',
         'こんな戦況からでも勝てるのが僕ら',
         '死体撃ちする奴がいるとゲームが楽しくなくなる。',
-        'Valorantに全てを賭けれるのかよ'
+        'Valorantに全てを賭けれるのかよ',
+        '動画見た。リロードの最中に逃げろよ。と思うのは俺がFPSに慣れてるからか？\n銃声で即座に敵の位置を確認、遮蔽物を利用してのタイミングを計った立ち回り\nうずくまってて撃たれてる連中は馬鹿としか言いようがないよ\nでも流石に一般人に要求するのは酷か'
     ]
     rand_num1 = random.randint(0,len(ramu) - 1)
-    return ramu[rand_num1] + " by ramuline"
+    return ramu[rand_num1] + " --- ramuline"
